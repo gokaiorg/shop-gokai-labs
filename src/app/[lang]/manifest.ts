@@ -2,9 +2,9 @@ import { MetadataRoute } from 'next';
 
 export default function manifest(): MetadataRoute.Manifest {
     return {
-        name: 'Shop Template',
-        short_name: 'Shop',
-        description: 'A multilingual shop template',
+        name: 'Gokai Labs',
+        short_name: 'Gokai',
+        description: 'Digital Maintenance & Tech Concierge',
         start_url: '/',
         display: 'standalone',
         background_color: '#fff',

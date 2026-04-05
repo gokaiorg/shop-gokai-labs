@@ -20,7 +20,7 @@ function HeaderContent({ lang, dict }: { lang: string, dict: any }) {
                 <div className="flex items-center gap-4 md:gap-10">
                     <MobileNav lang={lang} dict={dict.header} />
                     <Link href={`/${lang}`} className="flex items-center space-x-2">
-                        <span className="inline-block font-bold sm:text-lg">Shop Template</span>
+                        <span className="inline-block font-bold sm:text-lg">Gokai Labs</span>
                     </Link>
 
                     {/* Primary Navigation */}

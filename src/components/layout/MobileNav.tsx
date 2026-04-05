@@ -36,7 +36,7 @@ export function MobileNav({ lang, dict }: { lang: string, dict: Record<string, s
                 <SheetHeader className="text-left">
                     <SheetTitle asChild>
                         <Link href={`/${lang}`} onClick={() => setOpen(false)} className="inline-block font-bold text-lg">
-                            Shop Template
+                            Gokai Labs
                         </Link>
                     </SheetTitle>
                 </SheetHeader>
