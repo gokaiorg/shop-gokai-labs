@@ -1,7 +1,8 @@
 {
-  "name": "shop-template",
-  "version": "0.1.0",
+  "name": "shop-gokai-labs",
+  "version": "1.0.0",
   "private": true,
+  "description": "Building digital experiences and Artificial Intelligence solutions, including AI agents, that drive results and create lasting impact for businesses worldwide.",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
