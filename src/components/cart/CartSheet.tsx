@@ -7,6 +7,7 @@ import {
     SheetHeader,
     SheetTitle,
     SheetTrigger,
+    SheetClose,
 } from "@/components/ui/sheet";
 import { ShoppingCart, Trash2, Plus, Minus, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -68,8 +69,16 @@ export function CartSheet() {
 
                 <div className="flex flex-1 flex-col gap-4">
                     {items.length === 0 ? (
-                        <div className="flex flex-1 items-center justify-center">
-                            <p className="text-muted-foreground">Your cart is empty.</p>
+                        <div className="flex flex-1 flex-col items-center justify-center gap-4">
+                            <div className="flex h-20 w-20 items-center justify-center rounded-full bg-muted">
+                                <ShoppingCart className="h-10 w-10 text-muted-foreground" aria-hidden="true" />
+                            </div>
+                            <p className="text-lg font-medium">Your cart is empty</p>
+                            <SheetClose asChild>
+                                <Button variant="outline" className="mt-2 cursor-pointer">
+                                    Continue Shopping
+                                </Button>
+                            </SheetClose>
                         </div>
                     ) : (
                         <div className="flex flex-1 flex-col gap-6">
@@ -78,12 +87,13 @@ export function CartSheet() {
                                     ? item.images[0]
                                     : "https://images.unsplash.com/photo-1595246140625-573b715d11dc?q=80&w=2670&auto=format&fit=crop";
 
+                                const itemName = lang === "fr" ? item.nameFr : item.nameEn;
                                 return (
                                     <div key={item.id} className="flex items-center gap-4">
                                         <div className="relative h-16 w-16 overflow-hidden rounded-md border bg-muted">
                                             <Image
                                                 src={imageUrl}
-                                                alt={item.nameEn}
+                                                alt={itemName}
                                                 fill
                                                 className="object-cover"
                                                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
@@ -93,7 +103,7 @@ export function CartSheet() {
                                             <div className="flex items-start justify-between gap-4">
                                                 <div className="flex flex-col gap-1">
                                                     <h3 className="line-clamp-1 font-medium">
-                                                        {lang === "fr" ? item.nameFr : item.nameEn}
+                                                        {itemName}
                                                     </h3>
                                                     <p className="text-sm text-muted-foreground">${item.price.toFixed(2)}</p>
                                                 </div>
@@ -104,7 +114,7 @@ export function CartSheet() {
                                                     onClick={() => removeItem(item.id)}
                                                 >
                                                     <Trash2 className="h-4 w-4" />
-                                                    <span className="sr-only">Remove item</span>
+                                                    <span className="sr-only">Remove {itemName}</span>
                                                 </Button>
                                             </div>
 
@@ -118,7 +128,7 @@ export function CartSheet() {
                                                         disabled={isLoading}
                                                     >
                                                         <Minus className="h-3 w-3" />
-                                                        <span className="sr-only">Decrease quantity</span>
+                                                        <span className="sr-only">Decrease quantity of {itemName}</span>
                                                     </Button>
                                                     <div className="flex h-8 w-8 items-center justify-center text-sm">
                                                         {item.quantity}
@@ -131,7 +141,7 @@ export function CartSheet() {
                                                         disabled={isLoading}
                                                     >
                                                         <Plus className="h-3 w-3" />
-                                                        <span className="sr-only">Increase quantity</span>
+                                                        <span className="sr-only">Increase quantity of {itemName}</span>
                                                     </Button>
                                                 </div>
                                             </div>
